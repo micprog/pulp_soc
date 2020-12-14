@@ -194,20 +194,25 @@ module fc_subsystem #(
 `else
     ibex_core #(
 `endif
-        .PMPEnable                ( 1'b0         ),
-        .MHPMCounterNum           ( 10           ),
-        .MHPMCounterWidth         ( 40           ),
-        .RV32E                    ( IBEX_RV32E   ),
-        .RV32M                    ( IBEX_RV32M   ),
-        .RV32B                    ( 1'b0         ),
-        .BranchTargetALU          ( 1'b0         ),
-        .WritebackStage           ( 1'b0         ),
-        .MultiplierImplementation ( "fast"       ),
-        .ICache                   ( 1'b0         ),
-        .DbgTriggerEn             ( 1'b1         ),
-        .SecureIbex               ( 1'b0         ),
-        .DmHaltAddr               ( 32'h1A110800 ),
-        .DmExceptionAddr          ( 32'h1A110808 )
+        .PMPEnable        ( 1'b0                ),
+        .PMPGranularity   ( 0                   ),
+        .PMPNumRegions    ( 4                   ),
+        .MHPMCounterNum   ( 10                  ),
+        .MHPMCounterWidth ( 40                  ),
+        .RV32E            ( IBEX_RV32E          ),
+        .RV32M            ( IBEX_RV32M ? ibex_pkg::RV32MFast : ibex_pkg::RV32MNone ),
+        .RV32B            ( ibex_pkg::RV32BNone ),
+        .RegFile          ( ibex_pkg::RegFileFF ),
+        .BranchTargetALU  ( 1'b0                ),
+        .WritebackStage   ( 1'b0                ),
+        .ICache           ( 1'b0                ),
+        .ICacheECC        ( 1'b0                ),
+        .BranchPredictor  ( 1'b0                ),
+        .DbgTriggerEn     ( 1'b1                ),
+        .DbgHwBreakNum    ( 1                   ),
+        .SecureIbex       ( 1'b0                ),
+        .DmHaltAddr       ( 32'h1A110800        ),
+        .DmExceptionAddr  ( 32'h1A110808        )
     ) lFC_CORE (
         .clk_i                 ( clk_i             ),
         .rst_ni                ( rst_ni            ),
@@ -249,6 +254,8 @@ module fc_subsystem #(
         .debug_req_i           ( debug_req_i       ),
 
         .fetch_enable_i        ( fetch_en_int      ),
+        .alert_minor_o         (                   ),
+        .alert_major_o         (                   ),
         .core_sleep_o          (                   )
     );
     end
