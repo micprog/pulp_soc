@@ -75,7 +75,8 @@ module fc_hwpe
     );
 
     mac_top_wrap #(
-        .ID  ( ID_WIDTH )
+        .ID  ( ID_WIDTH ),
+        .N_CORES(1)
     ) i_mac_top_wrap (
         .clk_i            ( clk_i          ),
         .rst_ni           ( rst_ni         ),

@@ -30,7 +30,7 @@ dependencies:
   fpnew:                  { git: "git@github.com:pulp-platform/fpnew.git", version: 0.6.4 }
   jtag_pulp:              { git: "git@github.com:pulp-platform/jtag_pulp.git", rev: "v0.1" }
   riscv:                  { git: "git@github.com:micprog/cv32e40p.git", rev: "pulpissimo-v3.4.1"} # To be updated to openhwgroup repository
-  ibex:                   { git: "git@github.com:micprog/ibex.git", rev: "9b187fe756e5a8123d6686e20011c25ce3e82e2e" } # To be updated with lowRISC dependency
+  ibex:                   { git: "git@github.com:micprog/ibex.git", rev: "30d7472f5a56bc1d59e914e863e6cf8a5908495d" } # To be updated with lowRISC dependency
   scm:                    { git: "git@github.com:pulp-platform/scm.git", version: 1.0.1}
   generic_FLL:            { git: "git@github.com:pulp-platform/generic_FLL.git", rev: "1c92dc73a940392182fd4cb7b86f35649b349595" }
   tech_cells_generic:     { git: "git@github.com:pulp-platform/tech_cells_generic.git", version: 0.2.2 }
@@ -43,7 +43,7 @@ dependencies:
   udma_camera:            { git: "git@github.com:pulp-platform/udma_camera.git", version: 1.1.1 }
   udma_filter:            { git: "git@github.com:pulp-platform/udma_filter.git", version: 1.0.2 }
   udma_external_per:      { git: "git@github.com:pulp-platform/udma_external_per.git", rev: "71a397519fbab1e36c37daf8f84178ca59d2fb70" }
-  hwpe-mac-engine:        { git: "git@github.com:micprog/hwpe-mac-engine.git", rev: "v1.2-bender" } # To be updated with pulp-platform dependency
+  hwpe-mac-engine:        { git: "git@github.com:micprog/hwpe-mac-engine.git", rev: "v1.2.1-bender" } # To be updated with pulp-platform dependency
   riscv-dbg:              { git: "git@github.com:pulp-platform/riscv-dbg.git", rev: "v0.2" }
   # apb for interface?
 
