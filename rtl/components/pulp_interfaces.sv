@@ -12,62 +12,28 @@
 `include "pulp_soc_defines.sv"
 
 //**********************************************************
-//**************** XBAR TCDM BUS 64 ************************
-//**********************************************************
-
-interface XBAR_TCDM_BUS_64;
-
-   // REQUEST CHANNEL
-   //***************************************
-   logic        req;
-   logic [31:0] add;
-   logic        wen;
-   logic [63:0] wdata;
-   logic [7:0]  be;
-   logic        gnt;
-
-   // RESPONSE CHANNEL
-   logic        r_opc;
-   logic [63:0] r_rdata;
-   logic        r_valid;
-
-   // Master Side
-   //***************************************
-   modport Master
-   (
-      output req, output add, output wen, output wdata, output be,
-      input gnt, input r_rdata, input r_opc, input r_valid
-   );
-
-   // Slave Side
-   //***************************************
-   modport Slave
-   (
-      input req, input add, input wen, input wdata, input be,
-      output gnt, output r_rdata, output r_opc, output r_valid
-   );
-
-endinterface // XBAR_TCDM_BUS_64
-
-//**********************************************************
 //**************** XBAR TCDM BUS ***************************
 //**********************************************************
 
-interface XBAR_TCDM_BUS;
+interface XBAR_TCDM_BUS
+#(
+   parameter DATA_WIDTH = 32,
+   parameter BE_WIDTH   = DATA_WIDTH/8
+);
 
    // REQUEST CHANNEL
    //***************************************
-   logic          req;
-   logic [31:0]   add;
-   logic          wen;
-   logic [31:0]   wdata;
-   logic [3:0]    be;
-   logic          gnt;
+   logic                  req;
+   logic [31:0]           add;
+   logic                  wen;
+   logic [DATA_WIDTH-1:0] wdata;
+   logic [BE_WIDTH-1:0]   be;
+   logic                  gnt;
 
    // RESPONSE CHANNEL
-   logic         r_opc;
-   logic [31:0]  r_rdata;
-   logic         r_valid;
+   logic                  r_opc;
+   logic [DATA_WIDTH-1:0] r_rdata;
+   logic                  r_valid;
 
    // Master Side
    //***************************************
@@ -93,14 +59,16 @@ endinterface // XBAR_TCDM_BUS
 
 interface XBAR_PERIPH_BUS
 #(
-   parameter ID_WIDTH = `NB_CORES+1
+   parameter ID_WIDTH   = `NB_CORES+1,
+   parameter DATA_WIDTH = 32,
+   parameter BE_WIDTH   = DATA_WIDTH/8
 );
    // REQUEST CHANNEL
    logic                   req;
    logic [31:0]            add;
    logic                   wen;
-   logic [31:0]            wdata;
-   logic [3:0]             be;
+   logic [DATA_WIDTH-1:0]  wdata;
+   logic [BE_WIDTH-1:0]    be;
    logic                   gnt;
    logic [ID_WIDTH-1:0]    id;
 
@@ -108,7 +76,7 @@ interface XBAR_PERIPH_BUS
    logic                   r_valid;
    logic                   r_opc;
    logic [ID_WIDTH-1:0]    r_id;
-   logic [31:0]            r_rdata;
+   logic [DATA_WIDTH-1:0]  r_rdata;
 
    // Master Side
    //***************************************
@@ -216,14 +184,17 @@ endinterface // XBAR_DEMUX_BUS
 //**************** TCDM BANK MEM BUS *********************
 //********************************************************
 
-interface TCDM_BANK_MEM_BUS;
+interface TCDM_BANK_MEM_BUS #(
+   parameter DATA_WIDTH = 32,
+   parameter BE_WIDTH   = DATA_WIDTH/8
+);
 
-   logic [31:0] wdata;
-   logic [31:0] add;
-   logic        req;
-   logic        wen;
-   logic [3:0]  be;
-   logic [31:0] rdata;
+   logic [DATA_WIDTH-1:0] wdata;
+   logic [31:0]           add;
+   logic                  req;
+   logic                  wen;
+   logic [BE_WIDTH-1:0]   be;
+   logic [DATA_WIDTH-1:0] rdata;
 
    modport Master
      (
