@@ -249,6 +249,8 @@ module fc_subsystem #(
         .irq_x_ack_o           ( core_irq_ack      ),
         .irq_x_ack_id_o        ( core_irq_ack_id   ),
 
+        .external_perf_i       ( {{16- N_EXT_PERF_COUNTERS {'0}}, perf_counters_int} ),
+
         .debug_req_i           ( debug_req_i       ),
 
         .fetch_enable_i        ( fetch_en_int      ),
