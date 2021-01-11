@@ -88,8 +88,8 @@ module fc_subsystem #(
 
     assign hart_id = {21'b0, CLUSTER_ID[5:0], 1'b0, CORE_ID[3:0]};
 
-    XBAR_TCDM_BUS core_data_bus ();
-    XBAR_TCDM_BUS core_instr_bus ();
+    // XBAR_TCDM_BUS core_data_bus ();
+    // XBAR_TCDM_BUS core_instr_bus ();
 
     //********************************************************
     //************ CORE DEMUX (TCDM vs L2) *******************

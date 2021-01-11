@@ -141,24 +141,28 @@ endinterface
 //******************** XBAR DEMUX BUS **********************
 //**********************************************************
 
-interface XBAR_DEMUX_BUS;
+interface XBAR_DEMUX_BUS
+#(
+   parameter DATA_WIDTH = 32,
+   parameter BE_WIDTH   = DATA_WIDTH/8
+);
 
    // REQUEST CHANNEL
-   logic        barrier;
-   logic        busy;
-   logic        exec_cancel;
-   logic        exec_stall;
-   logic        req;
-   logic [31:0] add;
-   logic        we;
-   logic [31:0] wdata;
-   logic [3:0]  be;
-   logic        gnt;
+   logic                  barrier;
+   logic                  busy;
+   logic                  exec_cancel;
+   logic                  exec_stall;
+   logic                  req;
+   logic [31:0]           add;
+   logic                  we;
+   logic [DATA_WIDTH-1:0] wdata;
+   logic [BE_WIDTH-1:0]   be;
+   logic                  gnt;
 
    // RESPONSE CHANNEL
-   logic        r_gnt;
-   logic        r_valid;
-   logic [31:0] r_rdata;
+   logic                  r_gnt;
+   logic                  r_valid;
+   logic [DATA_WIDTH-1:0] r_rdata;
 
    // Master Side
    //***************************************
