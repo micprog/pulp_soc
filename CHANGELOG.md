@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expose L2 Bank sizes to improve consistency
 - updated `apb_fll_if`, removed local interface definition to use the one defined externally
 - updated `hwpe-mac-engine`
+- updated `ibex`
 
 ### Removed
 ### Fixed
