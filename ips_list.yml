@@ -18,7 +18,7 @@
 #  work, make sure to checkout a branch.
 #
 common_cells:
-  commit: v1.20.0
+  commit: v1.21.0
   domain: [cluster, soc]
 L2_tcdm_hybrid_interco:
   commit: v1.0.0
@@ -48,7 +48,7 @@ apb_interrupt_cntrl:
   commit: v0.1.1
   domain: [soc]
 axi/axi:
-  commit: v0.24.1
+  commit: v0.27.0
   domain: [cluster, soc]
 # axi/axi_node:
 #   commit: v1.1.4
@@ -72,7 +72,7 @@ cv32e40p:
   commit: pulpissimo-v3.4.0-rev1
   domain: [cluster, soc]
 ibex:
-  commit: 95b85ddd1c995ace9f89ee42530f9e24820c1051 # pulpissimo-v6.1.0 with bugfix in src_files
+  commit: pulpissimo-v6.1.1
   group: lowRISC
   domain: [soc]
 scm:
@@ -82,7 +82,7 @@ generic_FLL:
   commit: 1c92dc73a940392182fd4cb7b86f35649b349595
   domain: [soc]
 tech_cells_generic:
-  commit: e1655889cf947b0f39c3f4e95410487d3505a771
+  commit: v0.2.3
   domain: [cluster, soc]
 udma/udma_core:
   commit: v1.0.2
